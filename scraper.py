@@ -11,6 +11,7 @@ import pandas as pd
 import threading
 from math import floor
 import locale
+from FCC import FCCGeocoder
 
 
 #This is used to return the results (above 30 days, and below the average home price for the tract)
