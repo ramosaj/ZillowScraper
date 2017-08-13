@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Massively by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}} " />
+		<noscript><link rel="stylesheet" href= "{{url_for('static',filename='css/noscript.css')}}" /></noscript>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Massively</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html"> Home </a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2>Search</h2>
+									<form form="get" action='/search'>
+										<div class="6u 12u$(xsmall)">
+											<input type="text" placeholder="City" name="city" />
+										</div>
+										<div class="6u$ 12u$(xsmall)">
+											<input type="text" placeholder="State" name="state"/><br />
+										</div>
+										<div class="6u$ 12u$(xsmall)">
+											<input type="text" placeholder="min price" name="min_price"/><br />
+										</div>
+										<div class="6u$ 12u$(xsmall)">
+											<input type="text" placeholder="max price" name="max_price"/><br />
+										</div>
+										<div class="12u$ 12u$(xmall)">
+											<button type='submit'> Search </button>
+										</div>
+									</form>
+									<p> By pressing submit, you search for great deals on houses! </p>
+								</header>
+
+							</article>
+
+						<!-- Posts -->
+					  {%  if listings.length != 0 %}
+							<section class="posts">
+								{% for listing in listings %}
+									<article>
+										<header>
+											<span class="date">{{ listing.Days }} Days on Zillow</span>
+											<h2> {{ listing.address }} </h2>
+										</header>
+										<a href="#" class="image fit"></a>
+										<ul>
+											<li>Zip code: {{ listing.postalCode }}</li>
+											<li>Price: ${{ listing.price }} </li>
+											<li> Median home value: {{listing.median_area_price}} </li>
+										<ul>
+										<ul class="actions">
+											<li><a href="#" class="button">See on Zillow </a> </li>
+										</ul>
+
+									</article>
+								{% endfor %}
+							</section>
+						{% endif %}
+
+						<!-- Footer -->
+
+					</div>
+
+				<!-- Footer -->
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; A website by Anthony Ramos</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+
+		<!-- Scripts -->
+			<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/jquery.scrollex.min.js')}}"></script>
+			<script src= "{{url_for('static',filename='js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/skel.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/util.js')}}"></script>
+			<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+	</body>
+</html>
